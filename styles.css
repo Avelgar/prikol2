@@ -1,25 +1,17 @@
-// Определение переменных
-$primary-color: #3498db;
-$hover-color: #2980b9;
-$font-family: 'Arial, sans-serif';
-
-// Стили для body
 body {
-    font-family: $font-family;
-    background-color: #f4f4f4;
-    padding: 20px;
-
-    // Стили для кнопки
-    .btn-custom {
-        background-color: $primary-color;
-        color: white;
-        border: none;
-        padding: 10px 20px;
-        cursor: pointer;
-
-        // Вложенность для стилей при наведении
-        &:hover {
-            background-color: $hover-color;
-        }
-    }
+  font-family: "Arial, sans-serif";
+  background-color: #f4f4f4;
+  padding: 20px;
 }
+body .btn-custom {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+body .btn-custom:hover {
+  background-color: #2980b9;
+}
+
+/*# sourceMappingURL=styles.css.map */
