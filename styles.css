@@ -1,17 +1,12 @@
 body {
-  font-family: "Arial, sans-serif";
-  background-color: #f4f4f4;
-  padding: 20px;
+  font-family: Arial, sans-serif;
 }
-body .btn-custom {
-  background-color: #3498db;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
+
+.btn {
+  background-color: #ff5100;
 }
-body .btn-custom:hover {
-  background-color: #2980b9;
+.btn:hover {
+  background-color: #b30000;
 }
 
 /*# sourceMappingURL=styles.css.map */

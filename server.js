@@ -1,18 +1,38 @@
-const express = require('express');
+const http = require('http');
+const fs = require('fs');
 const path = require('path');
-const app = express();
-const PORT = process.env.PORT || 3000;
 
-app.use(express.static(path.join(__dirname, 'public')));
-
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+const server = http.createServer((req, res) => {
+    if (req.url === '/') {
+        fs.readFile('index.html', (err, data) => {
+            if (err) {
+                res.writeHead(500);
+                return res.end('Ошибка сервера');
+            }
+            res.writeHead(200, { 'Content-Type': 'text/html' });
+            res.end(data);
+        });
+    } else if (req.url === '/404') {
+        fs.readFile('404.html', (err, data) => {
+            if (err) {
+                res.writeHead(500);
+                return res.end('Ошибка сервера');
+            }
+            res.writeHead(404, { 'Content-Type': 'text/html' });
+            res.end(data);
+        });
+    } else {
+        res.writeHead(404, { 'Content-Type': 'text/html' });
+        fs.readFile('404.html', (err, data) => {
+            if (err) {
+                res.writeHead(500);
+                return res.end('Ошибка сервера');
+            }
+            res.end(data);
+        });
+    }
 });
 
-app.use((req, res) => {
-    res.status(404).sendFile(path.join(__dirname, 'public', '404.html'));
-});
-
-app.listen(PORT, () => {
-    console.log(`Сервер запущен на http://localhost:${PORT}`);
+server.listen(3000, () => {
+    console.log('Сервер запущен на http://localhost:3000');
 });
